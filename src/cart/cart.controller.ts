@@ -51,11 +51,10 @@ export class CartController {
     @UseGuards(AuthGuard)
     @Patch(':cartId')
     updateStatusCart(
-        @Body() { status }: UpdateStatusCartDTO,
+        @Body() { status, products }: UpdateStatusCartDTO,
         @Param('cartId', new ParseIntPipe) cartId: number
     ) {
-        console.log("Controller")
-        return this.cartsByUserService.updateStatusCart({cartId, status })
+        return this.cartsByUserService.updateStatusCart({cartId, status,  })
     };
 
 }

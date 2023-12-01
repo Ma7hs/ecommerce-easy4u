@@ -28,6 +28,10 @@ export class UpdateStatusCartDTO{
   @IsNotEmpty()
   @IsEnum(StatusCart)
   status: StatusCart
+
+  @IsOptional()
+  products: ProductDTO[]
+
 }
 
 export class CartResponseDTO {
