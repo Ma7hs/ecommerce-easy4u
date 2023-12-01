@@ -24,7 +24,6 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install --force
-          npm install prisma
           npx prisma generate
           npm run build 
        
