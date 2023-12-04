@@ -5,7 +5,6 @@ import { UserInfo } from 'src/users/interface/users.interface';
 import { AuthGuard } from 'src/guard/auth.guard';
 import { Roles } from 'src/decorators/roles.decorators';
 import { UserType } from '@prisma/client';
-import { CacheInterceptor, CacheKey, CacheTTL } from '@nestjs/cache-manager';
 
 @Controller('favorites')
 export class FavoritesController {
@@ -14,9 +13,6 @@ export class FavoritesController {
 
     @Roles(UserType.ADMIN, UserType.COLABORATOR, UserType.CUSTOMER)
     @UseGuards(AuthGuard)
-    @UseInterceptors(CacheInterceptor)
-    @CacheTTL(10)
-    @CacheKey("all-favorites-by-user")
     @Get()
     favoriteByUser(
         @User() user: UserInfo

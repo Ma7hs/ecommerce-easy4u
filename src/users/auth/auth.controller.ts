@@ -2,9 +2,6 @@ import { Body, Controller, Get, Param, Post, Req, UseGuards, UseInterceptors } f
 import { AuthService } from './auth.service';
 import { UserType } from '@prisma/client'
 import { SignInDTO, SignUpDTO } from './dto/auth.dto';
-import { CacheInterceptor, CacheKey, CacheTTL } from '@nestjs/cache-manager';
-
-import { GoogleOauthGuard } from '../../guard/google-oauth.guard';
 import { User } from '../decorator/user.decorator';
 import { UserInfo } from '../../users/interface/users.interface';
 import { AuthGuard } from '../../guard/auth.guard';

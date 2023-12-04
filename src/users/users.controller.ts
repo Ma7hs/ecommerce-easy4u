@@ -13,9 +13,6 @@ export class UsersController {
     constructor(private readonly usersService: UsersService){}
 
     @Get()
-    // @UseInterceptors(CacheInterceptor)
-    // @CacheTTL(10)
-    // @CacheKey("all-users")
     @HttpCode(201)
     getAllUsers(
         @Query('userType') userType?: UserType

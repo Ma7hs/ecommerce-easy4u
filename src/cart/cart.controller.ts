@@ -6,9 +6,6 @@ import { UserInfo } from 'src/users/interface/users.interface';
 import { AuthGuard } from 'src/guard/auth.guard';
 import { Roles } from 'src/decorators/roles.decorators';
 import { UserType } from '@prisma/client';
-import { CacheInterceptor, CacheKey, CacheTTL } from '@nestjs/cache-manager';
-import { FilterCarts } from './interface/filters.interface';
-
 
 @Controller('carts-by-user')
 export class CartController {
@@ -24,9 +21,7 @@ export class CartController {
         return this.cartsByUserService.createCartByUser({ products, status, preparationTime }, user.id);
     };
 
-    @UseInterceptors(CacheInterceptor)
-    @CacheTTL(10)
-    @CacheKey("all-carts-by-user")
+
     @UseGuards(AuthGuard)
     @Get()
     @Roles(UserType.ADMIN, UserType.COLABORATOR, UserType.CUSTOMER)
@@ -37,9 +32,6 @@ export class CartController {
     }
 
 
-    @UseInterceptors(CacheInterceptor)
-    @CacheTTL(1)
-    @CacheKey("cart-by-id")
     @Get(':id')
     getCartById(
         @Param("id", new ParseIntPipe) id: number

@@ -4,7 +4,6 @@ import { ProductTypeResponseDTO, ProductResponseDTO, ProductDTO } from './dto/pr
 import { AuthGuard } from '../guard/auth.guard';
 import { Roles } from 'src/decorators/roles.decorators';
 import { ProductType, UserType } from '@prisma/client';
-import { CacheInterceptor, CacheKey, CacheTTL } from '@nestjs/cache-manager';
 
 @Controller('products')
 export class ProductsController {
@@ -19,10 +18,7 @@ export class ProductsController {
         console.log(productData.preparationTime)
         return this.productService.create(productData);
     }
-
-    @UseInterceptors(CacheInterceptor)
-    @CacheTTL(1)
-    @CacheKey("all-products")
+    
     @UseGuards(AuthGuard)
     @Roles(UserType.ADMIN, UserType.COLABORATOR, UserType.CUSTOMER)
     @Get()
@@ -51,17 +47,11 @@ export class ProductsController {
 
     @Roles(UserType.ADMIN, UserType.COLABORATOR, UserType.CUSTOMER)
     @UseGuards(AuthGuard)
-    @UseInterceptors(CacheInterceptor)
-    @CacheTTL(1)
-    @CacheKey("filter-products")
     @Get("/types")
     findAllTypes(): Promise<ProductTypeResponseDTO[]>{
         return this.productService.findAllFoodTypes();
     }
 
-    @UseInterceptors(CacheInterceptor)
-    @CacheTTL(1)
-    @CacheKey("product")
     @UseGuards(AuthGuard)
     @Roles(UserType.ADMIN, UserType.COLABORATOR, UserType.CUSTOMER)
     @Get(":id")
