@@ -83,6 +83,22 @@ export class ProductService {
     return types.map((type) => { return new ProductTypeResponseDTO(type)})
   }
 
+  async equalsName(productName: string){
+
+    console.log(productName)
+    
+    return await this.prisma.product.findMany({
+      select: {
+        ...selectProducts
+      },
+      where: {
+        name: {
+          contains: productName
+        }
+      }
+    })
+  }
+
   async update(id: number, data: any){
     return await this.prisma.product.update({ where: { id }, data });
   }

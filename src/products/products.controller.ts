@@ -14,8 +14,6 @@ export class ProductsController {
     @Post()
     async create(
         @Body() productData: ProductDTO) {
-        console.log(productData);
-        console.log(productData.preparationTime)
         return this.productService.create(productData);
     }
     
@@ -50,6 +48,13 @@ export class ProductsController {
     @Get("/types")
     findAllTypes(): Promise<ProductTypeResponseDTO[]>{
         return this.productService.findAllFoodTypes();
+    }
+
+    @Get('/equals')
+    async findEqualsName(
+        @Query('productName') productName: string
+    ){
+        return await this.productService.equalsName(productName)
     }
 
     @UseGuards(AuthGuard)

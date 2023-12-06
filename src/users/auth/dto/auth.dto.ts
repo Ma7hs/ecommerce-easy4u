@@ -34,7 +34,7 @@ export class RefreshToken {
   ipAddress: string;
 
   sign(): string {
-    return sign({ ...this }, process.env.JSON_WEB_TOKEN_SECRET);
+    return sign({ ...this }, "gsadihq289u0-deuhd0ewiofhis8-wq7217bdioq-26w8a");
   }
 
   constructor(init?: Partial<RefreshToken>) {

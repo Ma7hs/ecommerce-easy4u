@@ -22,13 +22,13 @@ export class ForgotPasswordService {
       return new ForgotPasswordResponseDTO({message: "Usuário não encontrado", statusCode: 401})
     }
 
-    const token = await jwt.sign({ id: user.id }, process.env.JSON_WEB_TOKEN_SECRET, { expiresIn: "1000000" })
+    const token = await jwt.sign({ id: user.id }, "gsadihq289u0-deuhd0ewiofhis8-wq7217bdioq-26w8a", { expiresIn: "1000000" })
   
     let transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_SENDER,
-        pass: process.env.EMAIL_PASSWORD
+        user: "easy4u.dev@gmail.com",
+        pass: "tumrpajsmpagestu"
       }
     });
 

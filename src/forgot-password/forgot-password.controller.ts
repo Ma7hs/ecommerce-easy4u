@@ -29,7 +29,7 @@ export class ForgotPasswordController {
     ){
         const newToken = token.split(' ')[0]
     
-        await jwt.verify(newToken, process.env.JSON_WEB_TOKEN_SECRET, async (err, decoded) => {
+        await jwt.verify(newToken, "gsadihq289u0-deuhd0ewiofhis8-wq7217bdioq-26w8a", async (err, decoded) => {
             if(err){
                 console.log(err)
                 throw new UnauthorizedException()

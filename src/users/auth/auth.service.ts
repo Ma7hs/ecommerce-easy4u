@@ -141,7 +141,7 @@ export class AuthService {
         const token = jwt.sign({
             name: name,
             id: id
-        }, process.env.JSON_WEB_TOKEN_SECRET, {
+        }, "gsadihq289u0-deuhd0ewiofhis8-wq7217bdioq-26w8a", {
             expiresIn: 10000
         })
         return { statusCode: 201, message: token }
@@ -175,15 +175,15 @@ export class AuthService {
             email: email,
             name: name
         },
-            process.env.JSON_WEB_TOKEN_SECRET,
+            "gsadihq289u0-deuhd0ewiofhis8-wq7217bdioq-26w8a",
             { expiresIn: "1000000000000000" }
         )
 
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: process.env.EMAIL_SENDER,
-                pass: process.env.EMAIL_PASSWORD
+                user: "easy4u.dev@gmail.com",
+                pass: "tumrpajsmpagestu"
             }
         });
 
