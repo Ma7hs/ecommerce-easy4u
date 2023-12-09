@@ -8,7 +8,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root_admin:easy4u.bcd@easy4u-lucas.mysql.database.azure.com:3306/easy4utest"
+  url      = "mysql://admin_easy4u:abcd.127@easy4u-bd.mysql.database.azure.com:3306/easy4u_origin"
 }
 
 model User {

@@ -84,9 +84,6 @@ export class ProductService {
   }
 
   async equalsName(productName: string){
-
-    console.log(productName)
-    
     return await this.prisma.product.findMany({
       select: {
         ...selectProducts

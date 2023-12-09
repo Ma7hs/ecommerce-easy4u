@@ -315,12 +315,12 @@ export class AuthService {
         const user = await this.prismaService.user.findUnique({where: {id: id}})
         const client = await this.prismaService.customer.findFirst({where: {userId: user.id}})
         const balance = await this.prismaService.balance.findFirst({where: {customerId: client.id}})
-
+        
         const resposeMe = {
             name: user.name,
             email: user.email,
-            photo: client.photo,
-            balance: balance.balance,
+            photo: client.photo ? client.photo : null,
+            balance: balance ? balance.balance : 0,
             userType: user.userType
         }
         
