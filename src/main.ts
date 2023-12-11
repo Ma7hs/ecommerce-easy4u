@@ -15,14 +15,7 @@ async function bootstrap() {
       },
     }),
   );
-  const corsOptions = {
-    origin: '*', // Permitir apenas este domínio
-    methods: ['GET', 'POST','PUT','PATCH','DELETE'], // Métodos permitidos
-    allowedHeaders: ['Content-Type'], // Cabeçalhos permitidos
-  };
-
-  // Aplicar as opções de CORS usando o middleware CorsModule
-  app.use(cors(corsOptions));
+  await app.enableCors()
   await app.listen(process.env.PORT || 8080);
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
